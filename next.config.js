@@ -6,3 +6,9 @@ module.exports = {
     defaultLocale: "es-MX",
   },
 };
+
+module.exports = {
+  env: {
+      mongodburl: "mongodb://localhost:27017/bhdb",
+  }
+};
