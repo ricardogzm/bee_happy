@@ -1,8 +1,9 @@
-import { classNames, INavLinks } from "@widgets/Navbar";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import classNames from "classnames";
+import { useRouter } from "next/router";
+import { INavLinks } from "@widgets/Navbar";
 
-export const HeaderLink = ({ name, href, className }: INavLinks) => {
+export const NavbarLink = ({ name, href, className }: INavLinks) => {
   const router = useRouter();
 
   return (
