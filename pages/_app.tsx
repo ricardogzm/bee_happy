@@ -1,7 +1,8 @@
 import "@styles/globals.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
-import { Navbar } from "@widgets/Navbar";
+import { Navbar } from "@components/Navbar";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Navbar />
+      <NextNProgress options={{ showSpinner: false }} />
       <Component {...pageProps} />
     </>
   );

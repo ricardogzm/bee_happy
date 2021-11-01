@@ -1,8 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import type { NextPage } from "next";
-import { Navbar } from "@widgets/Navbar";
-import { Disclosure } from "@headlessui/react";
 import { HeaderForm } from "@components/home/HeaderForm";
 
 const Home: NextPage = () => {

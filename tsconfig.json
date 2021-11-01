@@ -18,7 +18,6 @@
     "paths": {
       "@public/*": ["public/*"],
       "@styles/*": ["styles/*"],
-      "@widgets/*": ["widgets/*"],
       "@components/*": ["components/*"]
     }
   },

@@ -1,20 +1,14 @@
-import { faTimes, faBars, faBell } from "@fortawesome/free-solid-svg-icons";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Fragment, useState, useEffect, useRef } from "react";
-import { NavbarLink } from "@components/Header/NavbarLink";
-import classNames from "classnames";
 import Link from "next/link";
-
-export interface INavLinks {
-  name: string;
-  href: string;
-  className: string;
-}
+import classNames from "classnames";
+import { Menu, Transition } from "@headlessui/react";
+import { NavbarLink } from "@components/Navbar/NavbarLink";
+import { Fragment, useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faBars, faBell } from "@fortawesome/free-solid-svg-icons";
 
 const navigation = [
   { name: "Quiénes somos", href: "/about", id: "about" },
-  { name: "Campañas", href: "#", id: "campaings" },
+  { name: "Campañas", href: "/campaigns", id: "campaings" },
   { name: "Donar", href: "#", id: "donate" },
   { name: "Ingresar", href: "#", id: "signin" },
 ];
@@ -50,7 +44,7 @@ export function Navbar() {
         "z-50 bg-white sticky transition-top duration-200 shadow-md"
       )}
     >
-      <div className="max-w-full px-6 lg:px-8">
+      <div className="max-w-full px-8 lg:px-10">
         <div className="relative flex items-center justify-between h-20">
           {/* Mobile menu button*/}
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -87,10 +81,11 @@ export function Navbar() {
                           <Menu.Item key={item.id}>
                             {({ active }) => (
                               <NavbarLink
-                                name={item.name}
                                 href={item.href}
                                 className="block px-3 py-2 rounded-md text-base font-medium"
-                              />
+                              >
+                                {item.name}
+                              </NavbarLink>
                             )}
                           </Menu.Item>
                         ))}
@@ -125,11 +120,12 @@ export function Navbar() {
               <div className="flex space-x-5">
                 {navigation.map((item) => (
                   <NavbarLink
-                    name={item.name}
+                    key={item.id}
                     href={item.href}
                     className="flex-none px-3 py-2 rounded-md text-lg font-semibold tracking-tight"
-                    key={item.id}
-                  />
+                  >
+                    {item.name}
+                  </NavbarLink>
                 ))}
               </div>
             </div>
