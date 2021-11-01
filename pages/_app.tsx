@@ -1,8 +1,8 @@
 import "@styles/globals.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
-import { Navbar } from "@components/Navbar";
 import NextNProgress from "nextjs-progressbar";
+import { Navbar } from "@components/common";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ReactNode } from "react";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import { AnchorHTMLAttributes, ReactNode } from "react";
 
-// HTMLAttributes is necessary for mobile menu to close when an item is clicked
-export interface INavLinks extends React.HTMLAttributes<HTMLAnchorElement> {
+// AnchorHTMLAttributes is necessary for mobile menu to close when an item is clicked
+export interface INavLinks extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   className: string;
   children: ReactNode;

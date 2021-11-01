@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classNames from "classnames";
 import { Menu, Transition } from "@headlessui/react";
-import { NavbarLink } from "@components/Navbar/NavbarLink";
+import { NavbarLink } from "@components/common/Navbar";
 import { Fragment, useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars, faBell } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,6 @@ const navigation = [
   { name: "Ingresar", href: "#", id: "signin" },
 ];
 
-// TODO: Hide pages menu on click for mobile
 export function Navbar() {
   const [navState, setNavState] = useState({ prevScrollPos: 0, visible: true });
   const prevScroll = useRef(0);
@@ -41,28 +40,28 @@ export function Navbar() {
     <nav
       className={classNames(
         navState.visible ? "top-0" : "-top-20",
-        "z-50 bg-white sticky transition-top duration-200 shadow-md"
+        "sticky z-50 bg-white shadow-md transition-top duration-200"
       )}
     >
-      <div className="max-w-full px-8 lg:px-10">
+      <div className="px-8 max-w-full lg:px-10">
         <div className="relative flex items-center justify-between h-20">
           {/* Mobile menu button*/}
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
             <Menu as="div" className="relative">
               {({ open }) => (
                 <>
-                  <Menu.Button className="flex p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-200 focus:text-gray-900 focus:bg-gray-400 transition-colors">
+                  <Menu.Button className="flex p-2 text-gray-400 hover:text-gray-600 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-400 rounded-md transition-colors">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <FontAwesomeIcon
                         icon={faTimes}
-                        className="block h-6 w-6"
+                        className="block w-6 h-6"
                         aria-hidden="true"
                       />
                     ) : (
                       <FontAwesomeIcon
                         icon={faBars}
-                        className="block h-6 w-6"
+                        className="block w-6 h-6"
                         aria-hidden="true"
                       />
                     )}
@@ -75,14 +74,14 @@ export function Navbar() {
                     leaveFrom="transform scale-100 opacity-100"
                     leaveTo="transform scale-75 opacity-0"
                   >
-                    <Menu.Items className="md:hidden absolute origin-top-left -left-8 w-48 mt-5 py-1 shadow-lg bg-white ring-1 ring-black ring-opacity-5 rounded-br-md">
-                      <div className="px-2 pt-2 pb-3 space-y-1">
+                    <Menu.Items className="absolute -left-8 mt-5 py-1 w-48 bg-white rounded-br-md shadow-lg origin-top-left ring-1 ring-black ring-opacity-5 md:hidden">
+                      <div className="pb-3 pt-2 px-2 space-y-1">
                         {navigation.map((item) => (
                           <Menu.Item key={item.id}>
                             {({ active }) => (
                               <NavbarLink
                                 href={item.href}
-                                className="block px-3 py-2 rounded-md text-base font-medium"
+                                className="block px-3 py-2 text-base font-medium rounded-md"
                               >
                                 {item.name}
                               </NavbarLink>
@@ -98,21 +97,21 @@ export function Navbar() {
           </div>
 
           {/* Navbar links and logo */}
-          <div className="flex-1 flex items-center md:items-stretch justify-center md:justify-between">
+          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-between">
             {/* Logo */}
             <Link href="/">
-              <div className="flex-shrink-0 flex items-center cursor-pointer">
+              <a className="flex flex-shrink-0 items-center">
                 <img
-                  className="block lg:hidden h-8 w-auto"
+                  className="block w-auto h-8 lg:hidden"
                   src="/Bee.svg"
                   alt="Workflow"
                 />
                 <img
-                  className="hidden lg:block h-10 w-auto"
+                  className="hidden w-auto h-10 lg:block"
                   src="/Bee_completo.svg"
                   alt="Workflow"
                 />
-              </div>
+              </a>
             </Link>
 
             {/* Links */}
@@ -122,7 +121,7 @@ export function Navbar() {
                   <NavbarLink
                     key={item.id}
                     href={item.href}
-                    className="flex-none px-3 py-2 rounded-md text-lg font-semibold tracking-tight"
+                    className="flex-none px-3 py-2 text-lg font-semibold tracking-tight rounded-md"
                   >
                     {item.name}
                   </NavbarLink>
@@ -132,26 +131,26 @@ export function Navbar() {
           </div>
 
           {/* Profile and notifications */}
-          <div className="flex items-center absolute inset-y-0 right-0 pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
             <button
               type="button"
-              className="p-1 rounded-full text-gray-500 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              className="p-1 text-gray-500 hover:text-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
               <span className="sr-only">View notifications</span>
               <FontAwesomeIcon
                 icon={faBell}
-                className="block h-6 w-6"
+                className="block w-6 h-6"
                 aria-hidden="true"
               />
             </button>
 
             {/* Profile dropdown */}
-            <Menu as="div" className="ml-3 relative">
+            <Menu as="div" className="relative ml-3">
               <div>
-                <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">Open user menu</span>
                   <img
-                    className="h-8 w-8 rounded-full"
+                    className="w-8 h-8 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   />
@@ -166,14 +165,14 @@ export function Navbar() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className="absolute right-0 mt-2 py-1 w-48 bg-white rounded-md focus:outline-none shadow-lg origin-top-right ring-1 ring-black ring-opacity-5">
                   <Menu.Item>
                     {({ active }) => (
                       <a
                         href="#"
                         className={classNames(
                           active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
+                          "block px-4 py-2 text-gray-700 text-sm"
                         )}
                       >
                         Your Profile
@@ -186,7 +185,7 @@ export function Navbar() {
                         href="#"
                         className={classNames(
                           active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
+                          "block px-4 py-2 text-gray-700 text-sm"
                         )}
                       >
                         Settings
@@ -199,7 +198,7 @@ export function Navbar() {
                         href="#"
                         className={classNames(
                           active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
+                          "block px-4 py-2 text-gray-700 text-sm"
                         )}
                       >
                         Sign out

@@ -1,33 +1,32 @@
+import { Input } from "@components/ui";
+
 export const HeaderForm = () => {
   return (
-    <form action="" className="grid grid-cols-1 gap-5">
-      <input
+    <form action="" className="grid gap-5 grid-cols-1">
+      <Input
         type="text"
         name="fullname"
         id="fullname"
         placeholder="Nombre completo"
-        className="w-full rounded-md border-gray-300 shadow-sm py-3 px-3 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-400 focus:ring-opacity-80"
         required
       />
-      <input
+      <Input
         type="email"
         name="email-add"
         id="email-add"
         placeholder="Correo"
-        className="w-full rounded-md border-gray-300 shadow-sm py-3 px-3 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-400 focus:ring-opacity-80"
         required
       />
-      <input
+      <Input
         type="password"
         name="passw"
         id="passw"
         placeholder="Contraseña"
-        className="w-full rounded-md border-gray-300 shadow-sm py-3 px-3 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-400 focus:ring-opacity-80"
         required
       />
       <button
         type="submit"
-        className="w-full text-lg sm:text-xl font-semibold text-white bg-blue-500 hover:text-blue-500 hover:bg-blue-100 border-2 border-blue-500 transition-colors py-3 mb-4 md:mb-0 rounded-md"
+        className="mb-4 py-3 w-full hover:text-blue-500 text-white text-lg font-semibold hover:bg-blue-100 bg-blue-500 border-2 border-blue-500 rounded-md transition-colors sm:text-xl md:mb-0"
       >
         Involúcrate
       </button>
