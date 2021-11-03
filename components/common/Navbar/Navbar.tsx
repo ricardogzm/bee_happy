@@ -43,7 +43,7 @@ export function Navbar() {
         "sticky z-50 bg-white shadow-md transition-top duration-200"
       )}
     >
-      <div className="px-8 max-w-full lg:px-10">
+      <div className="px-6 max-w-full lg:px-8">
         <div className="relative flex items-center justify-between h-20">
           {/* Mobile menu button*/}
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">

@@ -12,11 +12,11 @@ const Home: NextPage = () => {
       <div className="pb-6 bg-yellow-500 md:pb-10">
         <header className="flex justify-between">
           <div className="mx-auto md:flex-shrink-0 md:max-w-lg lg:max-w-xl">
-            <section className="mt-20 mx-6">
-              <h1 className="mb-3 text-gray-800 text-2xl font-bold sm:text-3xl lg:text-4xl">
+            <section className="mt-12 mx-6">
+              <h1 className="py-3 text-gray-800 text-2xl font-bold sm:text-3xl lg:text-4xl">
                 Lorem, ipsum dolor sit.
               </h1>
-              <p className="mb-8 text-gray-800 text-base font-medium sm:text-lg">
+              <p className="pb-8 text-gray-800 text-base font-medium sm:text-lg">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
                 impedit natus eveniet optio id aperiam.
               </p>
