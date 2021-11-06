@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Image from "next/image";
 import type { NextPage } from "next";
 import { HeaderForm } from "@components/home";
+import beeheader from "@public/bee-header.webp";
 
 const Home: NextPage = () => {
   return (
@@ -25,12 +27,13 @@ const Home: NextPage = () => {
             </section>
           </div>
 
-          <div className="relative hidden overflow-hidden md:block">
-            <img
-              className="rounded-bl-[200px] max-w-none"
+          <div className="hidden overflow-hidden md:block">
+            <Image
+              layout="fixed"
               width="1060"
               height="720"
-              src="/bee-header.webp"
+              className="rounded-bl-[200px]"
+              src={beeheader}
               alt="Bees"
             />
           </div>

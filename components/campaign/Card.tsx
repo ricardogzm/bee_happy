@@ -17,6 +17,7 @@ export const Card = ({ href, imgSrc, children }: ICard) => {
           className="rounded-t-lg md:rounded-l-lg md:rounded-r-none"
           layout="fill"
           objectFit="cover"
+          alt=""
         />
       </div>
 

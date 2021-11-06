@@ -1,4 +1,5 @@
 import { Card } from "@components/campaign";
+import beeheader from "@public/bee-header.webp";
 
 const campaigns = () => {
   return (

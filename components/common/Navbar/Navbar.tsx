@@ -1,5 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import classNames from "classnames";
+import beecorto from "@public/Bee.svg";
+import pfpic from "@public/profile-pic.webp";
+import beecompleto from "@public/Bee_completo.svg";
 import { Menu, Transition } from "@headlessui/react";
 import { NavbarLink } from "@components/common/Navbar";
 import { Fragment, useState, useEffect, useRef } from "react";
@@ -78,14 +82,12 @@ export function Navbar() {
                       <div className="pb-3 pt-2 px-2 space-y-1">
                         {navigation.map((item) => (
                           <Menu.Item key={item.id}>
-                            {({ active }) => (
-                              <NavbarLink
-                                href={item.href}
-                                className="block px-3 py-2 text-base font-medium rounded-md"
-                              >
-                                {item.name}
-                              </NavbarLink>
-                            )}
+                            <NavbarLink
+                              href={item.href}
+                              className="block px-3 py-2 text-base font-medium rounded-md"
+                            >
+                              {item.name}
+                            </NavbarLink>
                           </Menu.Item>
                         ))}
                       </div>
@@ -101,16 +103,23 @@ export function Navbar() {
             {/* Logo */}
             <Link href="/">
               <a className="flex flex-shrink-0 items-center">
-                <img
-                  className="block w-auto h-8 lg:hidden"
-                  src="/Bee.svg"
-                  alt="Workflow"
-                />
-                <img
-                  className="hidden w-auto h-10 lg:block"
-                  src="/Bee_completo.svg"
-                  alt="Workflow"
-                />
+                <div className="relative block w-10 h-8 lg:hidden">
+                  <Image
+                    layout="fill"
+                    src={beecorto}
+                    alt="bee happy logo mini"
+                    objectFit="contain"
+                  />
+                </div>
+
+                <div className="relative hidden w-48 h-10 lg:block">
+                  <Image
+                    layout="fill"
+                    src={beecompleto}
+                    alt="bee happy full logo"
+                    objectFit="contain"
+                  />
+                </div>
               </a>
             </Link>
 
@@ -149,11 +158,19 @@ export function Navbar() {
               <div>
                 <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">Open user menu</span>
-                  <img
+                  {/* <img
                     className="w-8 h-8 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
+                    alt="Profile pic"
+                  /> */}
+                  <div className="relative w-8 h-8">
+                    <Image
+                      src={pfpic}
+                      className="rounded-full"
+                      alt="Profile pic"
+                      layout="fill"
+                    />
+                  </div>
                 </Menu.Button>
               </div>
               <Transition
