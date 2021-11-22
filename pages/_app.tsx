@@ -1,8 +1,12 @@
 import "@styles/globals.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
-import NextNProgress from "nextjs-progressbar";
 import { Navbar } from "@components/common";
+import NextNProgress from "nextjs-progressbar";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+
+config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -33,6 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <style type="text/css"></style>
       </Head>
       <Navbar />
       <NextNProgress options={{ showSpinner: false }} />

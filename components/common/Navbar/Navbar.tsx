@@ -13,8 +13,8 @@ import { faTimes, faBars, faBell } from "@fortawesome/free-solid-svg-icons";
 const navigation = [
   { name: "Quiénes somos", href: "/about", id: "about" },
   { name: "Campañas", href: "/campaigns", id: "campaings" },
-  { name: "Donar", href: "#", id: "donate" },
-  { name: "Ingresar", href: "#", id: "signin" },
+  { name: "Donar", href: "/donate", id: "donate" },
+  { name: "Ingresar", href: "/signin", id: "signin" },
 ];
 
 export function Navbar() {
@@ -54,21 +54,13 @@ export function Navbar() {
             <Menu as="div" className="relative">
               {({ open }) => (
                 <>
-                  <Menu.Button className="flex p-2 text-gray-400 hover:text-gray-600 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-400 rounded-md transition-colors">
-                    <span className="sr-only">Open main menu</span>
+                  <Menu.Button className="flex items-center justify-center w-10 h-10 text-center text-gray-400 hover:text-gray-600 focus:text-gray-900 text-2xl hover:bg-gray-200 focus:bg-gray-400 rounded-md transition-colors">
                     {open ? (
-                      <FontAwesomeIcon
-                        icon={faTimes}
-                        className="block w-6 h-6"
-                        aria-hidden="true"
-                      />
+                      <FontAwesomeIcon icon={faTimes} aria-hidden="true" />
                     ) : (
-                      <FontAwesomeIcon
-                        icon={faBars}
-                        className="block w-6 h-6"
-                        aria-hidden="true"
-                      />
+                      <FontAwesomeIcon icon={faBars} aria-hidden="true" />
                     )}
+                    <span className="sr-only">Open main menu</span>
                   </Menu.Button>
                   <Transition
                     enter="transition duration-200 ease-in-out"
@@ -143,14 +135,10 @@ export function Navbar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
             <button
               type="button"
-              className="p-1 text-gray-500 hover:text-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="flex items-center justify-center w-10 h-10 text-center text-gray-500 hover:text-gray-800 text-2xl rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
               <span className="sr-only">View notifications</span>
-              <FontAwesomeIcon
-                icon={faBell}
-                className="block w-6 h-6"
-                aria-hidden="true"
-              />
+              <FontAwesomeIcon icon={faBell} aria-hidden="true" />
             </button>
 
             {/* Profile dropdown */}
@@ -158,11 +146,6 @@ export function Navbar() {
               <div>
                 <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">Open user menu</span>
-                  {/* <img
-                    className="w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="Profile pic"
-                  /> */}
                   <div className="relative w-8 h-8">
                     <Image
                       src={pfpic}
