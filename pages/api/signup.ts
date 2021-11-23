@@ -36,6 +36,7 @@ const signUp = async (req: NextApiRequest, res: NextApiResponse) => {
             const token = jwt.sign(
                 {
                     id: savedUser._id,
+                    username: savedUser.username,
                     email: savedUser.email
                 }, 'beehappy', {
             });
