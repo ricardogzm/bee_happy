@@ -9,11 +9,6 @@ const signin = () => {
       <div className="z-10 flex justify-center w-full min-h-screen shadow-2xl lg:items-center lg:w-1/2 xl:w-4/12">
         <div className="mx-6 my-14 w-full max-w-lg space-y-6 lg:my-0 lg:max-w-md">
           <div>
-            <img
-              className="w-auto h-12"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-              alt="Workflow"
-            />
             <h2 className="mt-6 text-gray-900 text-3xl font-bold">
               Ingresa a tu cuenta
             </h2>
@@ -37,7 +32,7 @@ const signin = () => {
           className=""
           objectFit="cover"
           src={bee}
-          alt="Tenis Jordan"
+          alt="Bees"
         />
       </div>
     </div>
