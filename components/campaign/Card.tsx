@@ -22,7 +22,7 @@ export const Card = ({ href, imgSrc, children }: ICard) => {
       </div>
 
       <div className="pb-8 px-6 md:py-6 md:w-7/12">
-        <p className="py-3 text-gray-800 font-medium">{children}</p>
+        <p className="pb-3 text-gray-800 font-medium">{children}</p>
 
         <Button href={href} className="w-full md:w-auto">
           Más información

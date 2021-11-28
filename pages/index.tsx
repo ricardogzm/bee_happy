@@ -16,11 +16,11 @@ const Home: NextPage = () => {
           <div className="mx-auto md:flex-shrink-0 md:max-w-lg lg:max-w-xl">
             <section className="mt-12 mx-6">
               <h1 className="py-3 text-gray-800 text-2xl font-bold sm:text-3xl lg:text-4xl">
-                Lorem, ipsum dolor sit.
+                Las abejas necesitan nuestra ayuda.
               </h1>
               <p className="pb-8 text-gray-800 text-base font-medium sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-                impedit natus eveniet optio id aperiam.
+                Únete ahora a una comunidad de personas preocupadas por el
+                bienestar del medio ambiente y las abejas.
               </p>
 
               <HeaderForm />
@@ -40,39 +40,40 @@ const Home: NextPage = () => {
         </header>
         <div className="flex justify-center mt-12 mx-auto">
           <section className="mx-6 max-w-screen-xl">
-            <h2 className="mb-4 mt-6 text-2xl font-semibold md:text-5xl">
-              Lorem ipsum dolor sit amet.
+            <h2 className="my-3 text-2xl font-semibold md:text-4xl">
+              El poder de la polinización
             </h2>
-            <p className="text-lg md:text-xl">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              iusto eius quos, omnis iste pariatur tenetur, unde deleniti cumque
-              fuga necessitatibus distinctio quo tempora laborum fugit adipisci
-              magni voluptas, at quam neque itaque sequi inventore et eligendi!
-              Laudantium iusto numquam, facere tempora nam neque qui rerum
-              deleniti aspernatur. Quos laboriosam temporibus accusamus autem
-              molestiae, sequi iure ut labore odio blanditiis doloribus nihil
-              natus explicabo veritatis eaque? Eum, laudantium quia? Vero
-              explicabo molestiae praesentium magni obcaecati cum beatae
-              molestias ab ea aspernatur. Laudantium excepturi exercitationem
-              quas explicabo iste velit error ipsum nihil at esse aliquam,
-              cumque aperiam libero accusantium, totam ullam.
+            <p className="text-md md:text-lg">
+              La polinización —la transferencia del polen de las partes
+              masculinas a las partes femeninas de una planta— es vital para la
+              reproducción de las plantas, y el 90% de las plantas con flor
+              reciben ayuda de algún tipo de especie animal polinizadora. En la
+              agricultura, se calcula que aproximadamente un tercio del volumen
+              total de los alimentos que se producen se benefician de la
+              polinización animal. <br /> Son muchos los animales que actúan
+              como polinizadores, desde mamíferos como murciélagos y monos,
+              hasta los colibríes e incluso algunos tipos de lagartijas. Pero
+              los insectos son el principal grupo de polinizadores, siendo las
+              abejas, por lejos, las mayores contribuyentes.
             </p>
-            <h2 className="mb-4 mt-6 text-2xl font-semibold md:text-5xl">
-              Lorem ipsum dolor sit amet.
+            <h2 className="my-3 text-2xl font-semibold md:text-4xl">
+              ¿Qué está pasando con la población apícola?
             </h2>
-            <p className="text-lg md:text-xl">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              iusto eius quos, omnis iste pariatur tenetur, unde deleniti cumque
-              fuga necessitatibus distinctio quo tempora laborum fugit adipisci
-              magni voluptas, at quam neque itaque sequi inventore et eligendi!
-              Laudantium iusto numquam, facere tempora nam neque qui rerum
-              deleniti aspernatur. Quos laboriosam temporibus accusamus autem
-              molestiae, sequi iure ut labore odio blanditiis doloribus nihil
-              natus explicabo veritatis eaque? Eum, laudantium quia? Vero
-              explicabo molestiae praesentium magni obcaecati cum beatae
-              molestias ab ea aspernatur. Laudantium excepturi exercitationem
-              quas explicabo iste velit error ipsum nihil at esse aliquam,
-              cumque aperiam libero accusantium, totam ullam.
+            <p className="text-md md:text-lg">
+              ¿Las abejas están desapareciendo? En el caso de las abejas
+              melíferas, el panorama general indica que no. Las colonias de
+              abejas melíferas gestionadas han aumentado, de hecho, en un 65% a
+              nivel mundial desde 1961. <br /> Para las abejas silvestres, la
+              situación es más complicada: distintas abejas silvestres tienen
+              características biológicas y necesidades muy diferentes, lo que
+              complica la evaluación de su desarrollo en general. Sin embargo,
+              es una realidad que ciertos grupos de especies de abejas
+              silvestres en regiones específicas están disminuyendo. <br /> Y
+              tanto las abejas silvestres como las abejas melíferas siguen
+              enfrentándose a varios desafíos entre los que se encuentran plagas
+              y enfermedades, factores genéticos, falta de nutrición y hábitat
+              condiciones climáticas adversas y prácticas agronómicas, entre
+              otros.
             </p>
           </section>
         </div>

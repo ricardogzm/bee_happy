@@ -14,7 +14,7 @@ const navigation = [
   { name: "Quiénes somos", href: "/about", id: "about" },
   { name: "Campañas", href: "/campaigns", id: "campaings" },
   { name: "Donar", href: "/donate", id: "donate" },
-  { name: "Ingresar", href: "/signin", id: "signin" },
+  { name: "Ingresar", href: "/auth/signin", id: "signin" },
 ];
 
 export function Navbar() {
@@ -44,7 +44,7 @@ export function Navbar() {
     <nav
       className={classNames(
         navState.visible ? "top-0" : "-top-20",
-        "sticky z-50 bg-white shadow-md transition-top duration-200"
+        "sticky z-50 bg-white shadow-md opacity-95 transition-top duration-200"
       )}
     >
       <div className="px-6 max-w-full lg:px-8">
@@ -101,6 +101,7 @@ export function Navbar() {
                     src={beecorto}
                     alt="bee happy logo mini"
                     objectFit="contain"
+                    priority
                   />
                 </div>
 
@@ -110,6 +111,7 @@ export function Navbar() {
                     src={beecompleto}
                     alt="bee happy full logo"
                     objectFit="contain"
+                    priority
                   />
                 </div>
               </a>

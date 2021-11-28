@@ -1,13 +1,11 @@
-import Image from "next/image";
 import { Button } from "@components/ui";
-import stb from "@public/save_the_bees.webp";
 import { OwnImage } from "@components/common";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const donate = () => {
   return (
-    <div className="bg-blue-500">
+    <div className="min-h-screen bg-blue-500">
       <div className="mx-auto pt-12 px-6 max-w-screen-2xl">
         <h2 className="py-3 text-yellow-400 text-2xl font-semibold sm:text-3xl lg:text-4xl">
           ¿Cómo aportan tus donaciones?
@@ -28,7 +26,6 @@ const donate = () => {
           </Button>
           <div className="relative w-64 h-64">
             <OwnImage src={"/save_the_bees.webp"} />
-            {/* <Image src={stb} alt="Save the bees" layout="fill" /> */}
           </div>
         </div>
       </div>

@@ -13,13 +13,15 @@ const about = () => {
             ¿Qué es Bee Happy?
           </h2>
           <p className="mb-6 text-gray-700 text-base font-medium sm:text-lg">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Necessitatibus, excepturi minima! Distinctio, repellendus?
-            Voluptatum blanditiis itaque commodi consectetur laborum minima
-            omnis repellat deleniti, vitae vero beatae impedit facere veniam
-            numquam facilis voluptas labore? Facilis ducimus distinctio incidunt
-            assumenda eaque! Quis nemo error eveniet magni enim odit nesciunt
-            doloremque ad amet.
+            <b>bee happy</b> nace con el objeto de promover la importancia de
+            las abejas entre la población mexicana, fomentando el conocimiento y
+            el respeto de estos polinizadores a través de campañas de
+            comunicación para preservar las 2,000 especies de abejas que existen
+            en México, con la visión de convertir a nuestro país en uno de los
+            santuarios más grandes de polinizadores en el planeta. Nuestro
+            principal recurso, una experiencia web que permite conectar con
+            apicultores cercanos para así evitar malos tratos a colmenas no
+            deseadas.
           </p>
           <p className="mb-6 text-gray-700 text-base font-medium sm:text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
