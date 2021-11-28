@@ -13,12 +13,13 @@ const signin = () => {
               Ingresa a tu cuenta
             </h2>
             <p className="mt-2 text-gray-600 text-sm">
-              O{" "}
-              <Link href="/signup">
+              O créala{" "}
+              <Link href="/auth/signup">
                 <a className="hover:text-blue-500 text-blue-600 font-medium">
-                  créala aquí
+                  aquí
                 </a>
               </Link>
+              .
             </p>
           </div>
 

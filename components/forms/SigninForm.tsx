@@ -1,13 +1,35 @@
+import { Input } from "@components/ui";
+import { useState } from "react";
 import { faUnlock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Input } from "@components/ui";
 
 export const SigninForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const res = await fetch("/api/signin", {
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const result = await res.json();
+    console.log(result);
+  };
+
   return (
     <div>
-      <form className="mt-6 space-y-6" action="#" method="POST">
+      <form className="mt-6 space-y-6" onSubmit={login}>
         <input type="hidden" name="remember" defaultValue="true" />
-        <div className="rounded-md shadow-sm space-y-4">
+        <div className="rounded-md shadow-sm space-y-3">
           <div>
             <label htmlFor="email-address" className="sr-only">
               Correo
@@ -17,9 +39,11 @@ export const SigninForm = () => {
               name="email"
               type="email"
               autoComplete="email"
-              required
-              className="relative rounded-md shadow-md"
+              className="rounded-md shadow-sm"
               placeholder="Correo"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
@@ -32,9 +56,11 @@ export const SigninForm = () => {
               name="password"
               type="password"
               autoComplete="current-password"
-              required
-              className="relative rounded-md shadow-md"
+              className="rounded-md shadow-sm"
               placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
         </div>
@@ -67,7 +93,7 @@ export const SigninForm = () => {
 
         <button
           type="submit"
-          className="group relative flex justify-center px-4 py-2 w-full text-white text-sm font-medium bg-blue-600 hover:bg-blue-700 border border-transparent rounded-md focus:outline-none transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="group relative flex justify-center px-4 py-2 w-full text-white text-lg font-medium bg-blue-600 hover:bg-blue-700 border border-transparent rounded-md focus:outline-none transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
             <FontAwesomeIcon

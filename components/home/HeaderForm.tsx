@@ -7,6 +7,7 @@ export const HeaderForm = () => {
         type="text"
         name="fullname"
         id="fullname"
+        className="rounded-md shadow-sm"
         placeholder="Nombre completo"
         required
       />
@@ -14,6 +15,7 @@ export const HeaderForm = () => {
         type="email"
         name="email-add"
         id="email-add"
+        className="rounded-md shadow-sm"
         placeholder="Correo"
         required
       />
@@ -21,6 +23,7 @@ export const HeaderForm = () => {
         type="password"
         name="passw"
         id="passw"
+        className="rounded-md shadow-sm"
         placeholder="Contraseña"
         required
       />

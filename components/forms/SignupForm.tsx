@@ -3,26 +3,81 @@ import {
   faEnvelope,
   faKey,
   faRedoAlt,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "@components/ui";
+import { useState } from "react";
 
 export const SignupForm = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confpassword, setConfpassword] = useState("");
+
+  const register = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (password !== confpassword) return;
+
+    const res = await fetch("/api/signup", {
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const result = await res.json();
+    console.log(result);
+  };
+
   return (
-    <form className="mt-6 space-y-6" action="#" method="POST">
+    <form onSubmit={register} className="mt-6 space-y-6">
       <input type="hidden" name="remember" defaultValue="true" />
-      <div className="space-y-4">
+      <div className="space-y-3">
+        <div>
+          <label
+            htmlFor="username"
+            className="block text-gray-700 text-sm font-medium"
+          >
+            Nombre de usuario
+          </label>
+          <div className="flex mt-1 rounded-md shadow">
+            <span
+              onClick={(e) => document.getElementById("username")!.focus()}
+              className="inline-flex items-center px-3 text-gray-500 text-base bg-gray-100 border border-r-0 border-gray-300 rounded-l-md"
+            >
+              <FontAwesomeIcon icon={faUser} />
+            </span>
+            <Input
+              id="username"
+              name="username"
+              type="text"
+              className="rounded-r-md"
+              value={username}
+              autoComplete="off"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+
         <div>
           <label
             htmlFor="email-address"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-gray-700 text-sm font-medium"
           >
             Correo
           </label>
-          <div className="mt-1 flex rounded-md shadow">
+          <div className="flex mt-1 rounded-md shadow">
             <span
               onClick={(e) => document.getElementById("email-address")!.focus()}
-              className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-100 text-gray-500 text-base"
+              className="inline-flex items-center px-3 text-gray-500 text-base bg-gray-100 border border-r-0 border-gray-300 rounded-l-md"
             >
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
@@ -31,8 +86,10 @@ export const SignupForm = () => {
               name="email"
               type="email"
               autoComplete="email"
-              required
               className="rounded-r-md"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
         </div>
@@ -40,12 +97,15 @@ export const SignupForm = () => {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-gray-700 text-sm font-medium"
           >
             Contraseña
           </label>
-          <div className="mt-1 flex rounded-md shadow">
-            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-100 text-gray-500 text-base">
+          <div className="flex mt-1 rounded-md shadow">
+            <span
+              onClick={(e) => document.getElementById("password")!.focus()}
+              className="inline-flex items-center px-3 text-gray-500 text-base bg-gray-100 border border-r-0 border-gray-300 rounded-l-md"
+            >
               <FontAwesomeIcon icon={faKey} />
             </span>
 
@@ -53,20 +113,29 @@ export const SignupForm = () => {
               id="password"
               name="password"
               type="password"
-              required
               className="rounded-r-md"
+              autoComplete="new-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
         </div>
+
         <div>
           <label
             htmlFor="confirm-password"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-gray-700 text-sm font-medium"
           >
             Confirmar contraseña
           </label>
-          <div className="mt-1 flex rounded-md shadow">
-            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-100 text-gray-500 text-base">
+          <div className="flex mt-1 rounded-md shadow">
+            <span
+              onClick={(e) =>
+                document.getElementById("confirm-password")!.focus()
+              }
+              className="inline-flex items-center px-3 text-gray-500 text-base bg-gray-100 border border-r-0 border-gray-300 rounded-l-md"
+            >
               <FontAwesomeIcon icon={faRedoAlt} />
             </span>
 
@@ -74,8 +143,11 @@ export const SignupForm = () => {
               id="confirm-password"
               name="confirm-password"
               type="password"
-              required
               className="rounded-r-md"
+              autoComplete="new-password"
+              value={confpassword}
+              onChange={(e) => setConfpassword(e.target.value)}
+              required
             />
           </div>
         </div>
@@ -87,11 +159,11 @@ export const SignupForm = () => {
             id="remember-me"
             name="remember-me"
             type="checkbox"
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
           <label
             htmlFor="remember-me"
-            className="ml-2 block text-sm text-gray-900"
+            className="block pl-2 text-gray-900 text-sm select-none"
           >
             Recuérdame
           </label>
@@ -100,12 +172,12 @@ export const SignupForm = () => {
 
       <button
         type="submit"
-        className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+        className="group relative flex justify-center px-4 py-2 w-full text-white text-lg font-medium bg-blue-600 hover:bg-blue-700 border border-transparent rounded-md focus:outline-none transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       >
-        <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           <FontAwesomeIcon
             icon={faCheck}
-            className="text-blue-400 group-hover:text-blue-300 transition-colors"
+            className="group-hover:text-blue-300 text-blue-400 transition-colors"
           />
         </span>
         Crear cuenta
