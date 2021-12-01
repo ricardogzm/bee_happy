@@ -7,10 +7,21 @@ export type Post = {
   username: string;
   date: string;
   text: string;
-  likes: number;
+  likes: any[];
   image?: string;
-  // comments:
+  comments?: comment[];
 };
+
+export interface comment {
+  date: string;
+  user: {
+    id: string;
+    username: string;
+    email: string;
+  };
+  text: string;
+  _id: string;
+}
 
 type Posts = Post[];
 

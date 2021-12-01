@@ -23,7 +23,7 @@ export const SigninForm = () => {
       .then((response) => {
         if (response!.status === 200) {
           mutate();
-          router.push("/feed");
+          setTimeout(() => router.push("/feed"), 1000);
         }
       });
   };

@@ -101,7 +101,7 @@ export const CreatePost = () => {
           onBlur={blurHandler}
         />
 
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-1">
           <div>
             <Input
               type="file"

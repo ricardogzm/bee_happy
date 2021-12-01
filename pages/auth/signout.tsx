@@ -12,13 +12,13 @@ const Signout: NextPage = () => {
       .catch((error) => console.error(error))
       .then((response) => {
         mutate();
-        setTimeout(() => router.push("/"), 2000);
+        setTimeout(() => router.push("/"), 1000);
       });
   };
 
   useEffect(() => {
     logoff();
-  }, []);
+  });
 
   return <div>Signing you out...</div>;
 };

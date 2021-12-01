@@ -23,9 +23,12 @@ const Feed = () => {
           <CreatePost />
           {postsData && (
             <div className="space-y-5">
-              {postsData!.map((post) => (
-                <Post key={post._id} {...post} />
-              ))}
+              {postsData!
+                .slice()
+                .reverse()
+                .map((post) => (
+                  <Post key={post._id} {...post} />
+                ))}
             </div>
           )}
         </div>
