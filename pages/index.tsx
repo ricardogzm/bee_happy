@@ -1,10 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
+import router from "next/router";
 import type { NextPage } from "next";
 import { HeaderForm } from "@components/home";
+import { useContext, useEffect } from "react";
 import beeheader from "@public/bee-header.webp";
+import { UserContext } from "contexts/UserContext";
 
 const Home: NextPage = () => {
+  const { data } = useContext(UserContext);
+
+  useEffect(() => {
+    if (data?.currentUser) router.push("/feed");
+  }, [data]);
+
   return (
     <>
       <Head>
