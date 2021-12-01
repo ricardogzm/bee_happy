@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import axios from "axios";
 
 interface ICurrentUser {
   currentUser: {
@@ -9,17 +10,26 @@ interface ICurrentUser {
   };
 }
 
-const fetcher = (url: string) => fetch(url).then((res: Response) => res.json());
+axios.defaults.baseURL = "http://localhost";
+
+export const fetcher = (url: string) =>
+  axios
+    .get(url)
+    .catch((err) => err.response)
+    .then((res) => res.data);
 
 export const useUser = () => {
-  const { data, error } = useSWR<ICurrentUser>("/api/currentuser", fetcher);
+  const { data, error, mutate } = useSWR<ICurrentUser>(
+    "/api/auth/currentuser",
+    fetcher
+  );
 
   if (error) {
-    console.error("Error");
+    console.log(error.status);
   }
   if (!data) {
     console.log("Loading...");
   }
 
-  return data;
+  return { data, error, mutate };
 };

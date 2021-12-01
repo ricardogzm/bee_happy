@@ -2,7 +2,7 @@ import { Input } from "@components/ui";
 
 export const HeaderForm = () => {
   return (
-    <form action="" className="grid gap-5 grid-cols-1">
+    <form action="" className="grid gap-3 grid-cols-1">
       <Input
         type="text"
         name="fullname"

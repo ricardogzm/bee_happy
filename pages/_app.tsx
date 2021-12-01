@@ -5,10 +5,13 @@ import { Navbar } from "@components/common";
 import NextNProgress from "nextjs-progressbar";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { UserProvider } from "contexts/UserContext";
 
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
+  // const [user, setUser] = useState();
+
   return (
     <>
       <Head>
@@ -38,10 +41,20 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <style type="text/css"></style>
+        {/* <link
+          rel="preload"
+          href="/api/auth/currentuser"
+          as="fetch"
+          crossOrigin="anonymous"
+        ></link> */}
       </Head>
-      <Navbar />
+
+      <UserProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </UserProvider>
+
       <NextNProgress options={{ showSpinner: false }} />
-      <Component {...pageProps} />
     </>
   );
 }

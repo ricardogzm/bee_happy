@@ -7,33 +7,36 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "@components/ui";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import axios from "axios";
+import router from "next/router";
+import { UserContext } from "contexts/UserContext";
 
 export const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confpassword, setConfpassword] = useState("");
+  const { mutate } = useContext(UserContext);
 
   const register = async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (password !== confpassword) return;
 
-    const res = await fetch("/api/signup", {
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    const result = await res.json();
-    console.log(result);
+    await axios
+      .post("/api/auth/signup", {
+        username,
+        email,
+        password,
+      })
+      .catch((error) => console.error(error))
+      .then((response) => {
+        if (response!.status === 201) {
+          mutate();
+          router.push("/feed");
+        }
+      });
   };
 
   return (

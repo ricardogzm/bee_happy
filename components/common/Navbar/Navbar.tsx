@@ -6,18 +6,31 @@ import pfpic from "@public/profile-pic.webp";
 import beecompleto from "@public/Bee_completo.svg";
 import { Menu, Transition } from "@headlessui/react";
 import { NavbarLink } from "@components/common/Navbar";
-import { Fragment, useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars, faBell } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "contexts/UserContext";
 
-const navigation = [
-  { name: "Quiénes somos", href: "/about", id: "about" },
-  { name: "Campañas", href: "/campaigns", id: "campaings" },
-  { name: "Donar", href: "/donate", id: "donate" },
-  { name: "Ingresar", href: "/auth/signin", id: "signin" },
-];
+interface INavigation {
+  name: string;
+  href: string;
+  id: string;
+}
 
-export function Navbar() {
+export const Navbar = () => {
+  const { data } = useContext(UserContext);
+
+  const navigation = [
+    { name: "Quiénes somos", href: "/about", id: "about" },
+    { name: "Campañas", href: "/campaigns", id: "campaings" },
+    { name: "Donar", href: "/donate", id: "donate" },
+    !data?.currentUser && {
+      name: "Ingresar",
+      href: "/auth/signin",
+      id: "signin",
+    },
+  ].filter((link): link is INavigation => link !== false);
+
   const [navState, setNavState] = useState({ prevScrollPos: 0, visible: true });
   const prevScroll = useRef(0);
 
@@ -134,85 +147,88 @@ export function Navbar() {
           </div>
 
           {/* Profile and notifications */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-            <button
-              type="button"
-              className="flex items-center justify-center w-10 h-10 text-center text-gray-500 hover:text-gray-800 text-2xl rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            >
-              <span className="sr-only">View notifications</span>
-              <FontAwesomeIcon icon={faBell} aria-hidden="true" />
-            </button>
-
-            {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3">
-              <div>
-                <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <span className="sr-only">Open user menu</span>
-                  <div className="relative w-8 h-8">
-                    <Image
-                      src={pfpic}
-                      className="rounded-full"
-                      alt="Profile pic"
-                      layout="fill"
-                    />
-                  </div>
-                </Menu.Button>
-              </div>
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
+          {data?.currentUser && (
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+              <button
+                type="button"
+                className="flex items-center justify-center w-10 h-10 text-center text-gray-500 hover:text-gray-800 text-2xl rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
-                <Menu.Items className="absolute right-0 mt-2 py-1 w-48 bg-white rounded-md focus:outline-none shadow-lg origin-top-right ring-1 ring-black ring-opacity-5">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-gray-700 text-sm"
-                        )}
-                      >
-                        Your Profile
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-gray-700 text-sm"
-                        )}
-                      >
-                        Settings
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-gray-700 text-sm"
-                        )}
-                      >
-                        Sign out
-                      </a>
-                    )}
-                  </Menu.Item>
-                </Menu.Items>
-              </Transition>
-            </Menu>
-          </div>
+                <span className="sr-only">View notifications</span>
+                <FontAwesomeIcon icon={faBell} aria-hidden="true" />
+              </button>
+
+              {/* Profile dropdown */}
+              <Menu as="div" className="relative ml-3">
+                <div>
+                  <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span className="sr-only">Open user menu</span>
+                    <div className="relative w-8 h-8">
+                      <Image
+                        src={pfpic}
+                        className="rounded-full"
+                        alt="Profile pic"
+                        layout="fill"
+                      />
+                    </div>
+                  </Menu.Button>
+                </div>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 mt-2 py-1 w-48 bg-white rounded-md focus:outline-none shadow-lg origin-top-right ring-1 ring-black ring-opacity-5">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active ? "bg-gray-100" : "",
+                            "block px-4 py-2 text-gray-700 text-sm"
+                          )}
+                        >
+                          Your Profile
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active ? "bg-gray-100" : "",
+                            "block px-4 py-2 text-gray-700 text-sm"
+                          )}
+                        >
+                          Settings
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link href="/auth/signout">
+                          <a
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-gray-700 text-sm"
+                            )}
+                          >
+                            Sign out
+                          </a>
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
+          )}
         </div>
       </div>
     </nav>
   );
-}
+};
