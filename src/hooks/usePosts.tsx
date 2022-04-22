@@ -29,7 +29,7 @@ type Posts = Post[];
 //   posts: Post[]
 // }
 
-axios.defaults.baseURL = "http://localhost";
+axios.defaults.baseURL = "http://localhost:4000";
 
 export const fetcher = (url: string) =>
   axios

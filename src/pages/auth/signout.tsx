@@ -1,14 +1,14 @@
 import axios from "axios";
-import { UserContext } from "contexts/UserContext";
 import { NextPage } from "next";
 import router from "next/router";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
+import { useUser } from "hooks/useUser";
 
 const Signout: NextPage = () => {
-  const { mutate } = useContext(UserContext);
+  const { mutate } = useUser();
   const logoff = async () => {
     await axios
-      .post("/api/auth/signout")
+      .post("/api/auth/signout", { withCredentials: true })
       .catch((error) => console.error(error))
       .then((response) => {
         mutate();

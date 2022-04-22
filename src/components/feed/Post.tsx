@@ -3,13 +3,13 @@ import {
   faEllipsisH,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useUser } from "hooks/useUser";
 import { Comment, CommInput } from ".";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post as PostType, usePosts } from "hooks/usePosts";
-import { UserContext } from "contexts/UserContext";
-import axios from "axios";
 
 export const Post = ({
   _id,
@@ -23,7 +23,7 @@ export const Post = ({
 }: PostType) => {
   const [commentsVisible, setCommentsVisible] = useState(false);
 
-  const { data: userData } = useContext(UserContext);
+  const { data: userData, error, mutate } = useUser();
   const { mutate: postsMutate } = usePosts();
 
   const dateString = new Date(date).toLocaleDateString("es-MX", {
@@ -71,7 +71,7 @@ export const Post = ({
           {image && (
             <div className="h-[28rem] relative my-3 w-full">
               <Image
-                src={`http://localhost/api/posts/image?filename=${image}`}
+                src={`http://localhost:4000/api/posts/image?filename=${image}`}
                 layout="fill"
                 className="rounded-md"
                 alt="Bee"

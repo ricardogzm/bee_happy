@@ -5,13 +5,10 @@ import { Navbar } from "@components/common";
 import NextNProgress from "nextjs-progressbar";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { UserProvider } from "contexts/UserContext";
 
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const [user, setUser] = useState();
-
   return (
     <>
       <Head>
@@ -49,10 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         ></link> */}
       </Head>
 
-      <UserProvider>
-        <Navbar />
-        <Component {...pageProps} />
-      </UserProvider>
+      <Navbar />
+      <Component {...pageProps} />
 
       <NextNProgress options={{ showSpinner: false }} />
     </>

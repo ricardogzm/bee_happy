@@ -1,24 +1,28 @@
-import { Input } from "@components/ui";
-import { useContext, useState } from "react";
-import { faUnlock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import router from "next/router";
-import { UserContext } from "contexts/UserContext";
+import { Input } from "@components/ui";
+import { useState } from "react";
+import { faUnlock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useUser } from "hooks/useUser";
 
 export const SigninForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { mutate } = useContext(UserContext);
+  const { mutate } = useUser();
 
   const login = async (event: React.FormEvent) => {
     event.preventDefault();
 
     await axios
-      .post("/api/auth/signin", {
-        email,
-        password,
-      })
+      .post(
+        "/api/auth/signin",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
       .catch((error) => console.error(error))
       .then((response) => {
         if (response!.status === 200) {

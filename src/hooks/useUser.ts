@@ -10,11 +10,11 @@ interface ICurrentUser {
   };
 }
 
-axios.defaults.baseURL = "http://localhost";
+axios.defaults.baseURL = "http://localhost:4000";
 
 export const fetcher = (url: string) =>
   axios
-    .get(url)
+    .get(url, {withCredentials: true})
     .catch((err) => err.response)
     .then((res) => res.data);
 

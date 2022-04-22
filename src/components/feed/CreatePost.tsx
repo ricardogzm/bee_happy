@@ -4,17 +4,15 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { FocusEvent } from "react";
 import { Input } from "@components/ui";
+import { useUser } from "hooks/useUser";
 import { usePosts } from "hooks/usePosts";
 import { TextArea } from "@components/ui";
-import { useContext, useState } from "react";
-import { ChangeEvent, FormEvent } from "react";
-import { UserContext } from "contexts/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FocusEvent, useState, ChangeEvent, FormEvent } from "react";
 
 export const CreatePost = () => {
-  const { data: userData } = useContext(UserContext);
+  const { data: userData } = useUser();
   const { mutate: postsMutate } = usePosts();
 
   const [minRows, setMinRows] = useState(1);

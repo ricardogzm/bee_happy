@@ -1,14 +1,14 @@
-import { Post } from "@components/feed";
-import { CreatePost } from "@components/feed";
-import { UserContext } from "contexts/UserContext";
 import router from "next/router";
+import { useEffect } from "react";
+import { Post } from "@components/feed";
+import { useUser } from "hooks/useUser";
 import { usePosts } from "hooks/usePosts";
-import { useContext, useEffect } from "react";
+import { CreatePost } from "@components/feed";
 
 const Feed = () => {
-  const { data } = useContext(UserContext);
+  const { data } = useUser();
 
-  const { data: postsData, mutate: postsMutate } = usePosts();
+  const { data: postsData } = usePosts();
 
   useEffect(() => {
     if (!data?.currentUser) {
@@ -16,11 +16,16 @@ const Feed = () => {
     }
   }, [data, postsData]);
 
+  if (!data?.currentUser) {
+    return <div>You are not logged in</div>;
+  }
+
   return (
     <div className="py-8 w-full">
       <div className="flex justify-center">
         <div className="w-full max-w-lg lg:max-w-2xl">
           <CreatePost />
+
           {postsData && (
             <div className="space-y-5">
               {postsData!

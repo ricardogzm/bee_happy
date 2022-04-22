@@ -5,19 +5,19 @@ import {
   faRedoAlt,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Input } from "@components/ui";
-import { useContext, useState } from "react";
 import axios from "axios";
 import router from "next/router";
-import { UserContext } from "contexts/UserContext";
+import { useState } from "react";
+import { Input } from "@components/ui";
+import { useUser } from "hooks/useUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confpassword, setConfpassword] = useState("");
-  const { mutate } = useContext(UserContext);
+  const { mutate } = useUser();
 
   const register = async (event: React.FormEvent) => {
     event.preventDefault();

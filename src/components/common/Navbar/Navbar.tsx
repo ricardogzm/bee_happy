@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames";
 import beecorto from "@public/Bee.svg";
+import { useUser } from "hooks/useUser";
 import pfpic from "@public/profile-pic.webp";
 import beecompleto from "@public/Bee_completo.svg";
 import { Menu, Transition } from "@headlessui/react";
@@ -9,7 +10,6 @@ import { NavbarLink } from "@components/common/Navbar";
 import { Fragment, useState, useEffect, useRef, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars, faBell } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "contexts/UserContext";
 
 interface INavigation {
   name: string;
@@ -18,7 +18,7 @@ interface INavigation {
 }
 
 export const Navbar = () => {
-  const { data } = useContext(UserContext);
+  const { data } = useUser();
 
   const navigation = [
     { name: "Quiénes somos", href: "/about", id: "about" },
