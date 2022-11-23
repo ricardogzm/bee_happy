@@ -14,7 +14,7 @@ axios.defaults.baseURL = "http://localhost:4000";
 
 export const fetcher = (url: string) =>
   axios
-    .get(url, {withCredentials: true})
+    .get(url, { withCredentials: true })
     .catch((err) => err.response)
     .then((res) => res.data);
 
@@ -24,12 +24,12 @@ export const useUser = () => {
     fetcher
   );
 
-  if (error) {
-    console.log(error.status);
-  }
-  if (!data) {
-    console.log("Loading...");
-  }
+  // if (error) {
+  //   console.log(error.status);
+  // }
+  // if (!data) {
+  //   console.log("Loading...");
+  // }
 
   return { data, error, mutate };
 };

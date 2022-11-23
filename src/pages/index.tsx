@@ -3,6 +3,7 @@ import Image from "next/image";
 import router from "next/router";
 import { useEffect } from "react";
 import type { NextPage } from "next";
+import { motion } from "framer-motion";
 import { useUser } from "hooks/useUser";
 import { HeaderForm } from "@components/home";
 import beeheader from "@public/bee-header.webp";
@@ -24,23 +25,45 @@ const Home: NextPage = () => {
         <title>Bee Happy</title>
         <meta name="description" content="Página principal de Bee Happpy" />
       </Head>
-      <div className="pb-6 bg-yellow-500 md:pb-10">
+      <div className="bg-yellow-500">
         <header className="flex justify-between">
-          <div className="mx-auto md:flex-shrink-0 md:max-w-lg lg:max-w-xl">
-            <section className="mt-12 mx-6">
-              <h1 className="py-3 text-gray-800 text-2xl font-bold sm:text-3xl lg:text-4xl">
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+              type: "spring",
+              bounce: 0.5,
+              stiffness: 100,
+            }}
+            className="mx-auto md:max-w-lg md:flex-shrink-0 lg:max-w-xl"
+          >
+            <section className="mx-6 mt-12">
+              <h1 className="py-3 text-2xl font-bold text-gray-800 sm:text-3xl lg:text-5xl">
                 Las abejas necesitan nuestra ayuda.
               </h1>
-              <p className="pb-8 text-gray-800 text-base font-medium sm:text-lg">
+              <p className="pb-8 text-base font-medium text-gray-800 sm:text-lg">
                 Únete ahora a una comunidad de personas preocupadas por el
                 bienestar del medio ambiente y las abejas.
               </p>
 
               <HeaderForm />
             </section>
-          </div>
+          </motion.div>
 
-          <div className="hidden overflow-hidden md:block">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.7,
+              type: "spring",
+              bounce: 0.5,
+              stiffness: 100,
+            }}
+            className="hidden max-h-min overflow-hidden md:block"
+          >
             <Image
               layout="fixed"
               width="1060"
@@ -48,15 +71,60 @@ const Home: NextPage = () => {
               className="rounded-bl-[200px]"
               src={beeheader}
               alt="Bees"
+              priority
             />
-          </div>
+          </motion.div>
         </header>
-        <div className="flex justify-center mt-12 mx-auto">
+        <div className="mx-auto flex justify-center bg-white pt-8 pb-10">
           <section className="mx-6 max-w-screen-xl">
-            <h2 className="my-3 text-2xl font-semibold md:text-4xl">
+            <div className="my-4 w-1/2">
+              <iframe
+                width="100%"
+                height="120"
+                scrolling="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/466282227&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=false"
+              ></iframe>
+              <div
+                style={{
+                  fontSize: "10px",
+                  color: "#cccccc",
+                  lineBreak: "anywhere",
+                  wordBreak: "normal",
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
+                  fontFamily:
+                    "Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif",
+                  fontWeight: 100,
+                }}
+              >
+                <a
+                  href="https://soundcloud.com/rousseaumusique"
+                  title="Rousseau"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#cccccc", textDecoration: "none" }}
+                >
+                  Rousseau
+                </a>{" "}
+                ·{" "}
+                <a
+                  href="https://soundcloud.com/rousseaumusique/rimsky-korsakov-flight-of-the-bumblebee-arr-rachmaninoff"
+                  title="Rimsky-Korsakov - Flight Of The Bumblebee (arr. Rachmaninoff)"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#cccccc", textDecoration: "none" }}
+                >
+                  Rimsky-Korsakov - Flight Of The Bumblebee (arr. Rachmaninoff)
+                </a>
+              </div>
+            </div>
+
+            <h2 className="my-2 text-2xl font-semibold md:text-4xl">
               El poder de la polinización
             </h2>
-            <p className="text-md md:text-lg">
+            <p className="text-md mb-6 md:text-lg">
               La polinización —la transferencia del polen de las partes
               masculinas a las partes femeninas de una planta— es vital para la
               reproducción de las plantas, y el 90% de las plantas con flor
@@ -69,10 +137,10 @@ const Home: NextPage = () => {
               los insectos son el principal grupo de polinizadores, siendo las
               abejas, por lejos, las mayores contribuyentes.
             </p>
-            <h2 className="my-3 text-2xl font-semibold md:text-4xl">
+            <h2 className="my-2 text-2xl font-semibold md:text-4xl">
               ¿Qué está pasando con la población apícola?
             </h2>
-            <p className="text-md md:text-lg">
+            <p className="text-md mb-6 md:text-lg">
               ¿Las abejas están desapareciendo? En el caso de las abejas
               melíferas, el panorama general indica que no. Las colonias de
               abejas melíferas gestionadas han aumentado, de hecho, en un 65% a
@@ -88,6 +156,18 @@ const Home: NextPage = () => {
               condiciones climáticas adversas y prácticas agronómicas, entre
               otros.
             </p>
+            <h2 className="my-2 text-2xl font-semibold md:text-4xl">
+              Documental de abejas
+            </h2>
+            <iframe
+              width="50%"
+              className="aspect-video"
+              src="https://www.youtube.com/embed/jfX09ZcxK64"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </section>
         </div>
       </div>
